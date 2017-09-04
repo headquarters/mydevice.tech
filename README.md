@@ -1,4 +1,11 @@
+# mydevice.tech
+
+A simple Vue.js app that takes browser info and places it on screen. The single file is a PHP script but only uses PHP for getting 
+the user's IP address. Client-side JavaScript gets info on screen size, browser size, battery level, and so on.
+
+CSS grid is used for the layout with a media query to break the grid down into a single column on smaller devices.  
+
 TODO:
-Add Google Analytics
-Small ad? Google or Carbon
-Git push for publishing to Webfaction
+* Add Google Analytics
+* Small ad? Google or Carbon
+* Git push for publishing to Webfaction
