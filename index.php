@@ -3,6 +3,9 @@
   <head>
     <title>My Device Info</title>
     <meta name="description" content="View your device's IP address, screen size, browser size, and battery information.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
       [v-cloak] {
         display: none;
@@ -158,8 +161,7 @@
               resolve({
                   template: '<p>Getting battery information is not supported in this browser.</p>'
                 });
-            }
-            
+            }            
           }
         }
       });     
