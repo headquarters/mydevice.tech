@@ -92,7 +92,7 @@
       A simple <a href="https://svelte.technology">svelte</a> app by <a href="http://michaelehead.com">Michael Head</a>
     </footer>
 
-    <script src="./app.js"></script>
+    <script src="./App.js"></script>
     <script>
       // https://davidwalsh.name/javascript-debounce-function
       function debounce(func, wait, immediate) {
