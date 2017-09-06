@@ -138,7 +138,8 @@
         },
         components: {
           battery: function(resolve, reject) {
-            navigator.getBattery()
+            if ("getBattery" in navigator) {
+              navigator.getBattery()
               .then(function(battery) {
                 resolve({
                   data: function() {
@@ -153,6 +154,12 @@
               function(err) {
                 reject(err);
               });
+            } else {
+              resolve({
+                  template: '<p>Getting battery information is not supported in this browser.</p>'
+                });
+            }
+            
           }
         }
       });     
