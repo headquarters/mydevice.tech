@@ -22,6 +22,7 @@
         font-size: 1.8rem;
         font-weight: bold;
         color: #333;
+        overflow-wrap: break-word;
       }
 
       section {
