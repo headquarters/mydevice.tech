@@ -8,7 +8,7 @@ pipeline {
         stage('Pre-build') {
           steps {
               echo 'Stopping and removing previous container...'
-              sh 'docker rm ${docker ps -f label=mydevice -q}'
+              sh 'docker rm $(docker ps -f label=mydevice -q)'
           }
         }
         stage('Build') {
