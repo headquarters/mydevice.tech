@@ -1,6 +1,7 @@
+# Extends https://github.com/KyleAMathews/docker-nginx/blob/master/default, with `ssi on;`
 server {
     ssi on;
-    root /usr/share/nginx/html;
+    root /var/www;
     index index.html index.htm;
 
     # Make site accessible from http://localhost/
@@ -21,4 +22,6 @@ server {
     location @root {
         rewrite .* / redirect;
     }
+
+    include /etc/nginx/basic.conf;
 }

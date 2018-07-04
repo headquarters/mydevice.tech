@@ -89,6 +89,10 @@
             <!--# echo var="remote_addr" default="no" -->
             Server: 
             <!--# echo var="server_addr" default="no" -->
+            Proxy:
+            <!--# echo var="proxy_protocol_addr" default="no"-->
+            Forwarded For:
+            <!--# echo var="proxy_add_x_forwarded_for" default="no"-->
         </p>
       </section>
       <div id="svelte-app"></div>
