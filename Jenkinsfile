@@ -5,14 +5,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Build container') {
-            echo 'Stopping and removing previous container...'
-            try {
-            sh 'docker container stop mydevice.tech'
-            }
-            catch (exc) {
-                echo 'Missing container error ignored.'
-            }
+        stage('Stop previous container') {
+           steps {
+                echo 'Stopping and removing previous container...'
+              
+              script {
+                try {
+                    sh 'docker container stop mydevice.tech'
+                }
+                catch (exc) {
+                    echo 'Missing container error ignored.'
+                }
+              }
+           }
         }
         stage('Build') {
             steps {
