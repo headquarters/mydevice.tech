@@ -8,7 +8,8 @@ pipeline {
         stage('Build container') {
           steps {
               echo 'Stopping and removing previous container...'
-              sh 'docker container stop mydevice.tech'
+              // send error to dev/null because an error will kill the bulid, but we don't care if the container does not exist
+              sh 'docker container stop mydevice.tech 2>/dev/null'
           }
         }
         stage('Build') {
