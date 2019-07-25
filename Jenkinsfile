@@ -6,16 +6,13 @@ pipeline {
 
     stages {
         stage('Build container') {
-          steps {
-              echo 'Stopping and removing previous container...'
-              try {
-                sh 'docker container stop mydevice.tech'
-              }
-              catch (exc) {
-                  echo 'Missing container error ignored.'
-              }
-              
-          }
+            echo 'Stopping and removing previous container...'
+            try {
+            sh 'docker container stop mydevice.tech'
+            }
+            catch (exc) {
+                echo 'Missing container error ignored.'
+            }
         }
         stage('Build') {
             steps {
