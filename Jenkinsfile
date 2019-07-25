@@ -10,6 +10,10 @@ pipeline {
               echo 'Stopping and removing previous container...'
               sh 'docker container stop mydevice.tech'
           }
+
+          when {
+
+          }
         }
         stage('Build') {
             steps {
