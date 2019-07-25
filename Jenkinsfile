@@ -5,17 +5,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Pre-build') {
+        stage('Build container') {
           steps {
               echo 'Stopping and removing previous container...'
-              sh 'docker rm $(docker ps -f label=mydevice -q)'
+              sh 'docker container stop mydevice.tech'
           }
         }
         stage('Build') {
             steps {
                 echo 'Building...'
                 sh 'docker build -t mydevice.tech . '
-                sh 'docker run -p 5555:80 -d -l mydevice.tech mydevice.tech'
+                sh 'docker run --name mydevice.tech --rm -p 5555:80 -d mydevice.tech'
             }
         }
         stage('Test') {
