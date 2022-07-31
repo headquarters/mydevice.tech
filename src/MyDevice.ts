@@ -1,80 +1,63 @@
+/* eslint-disable no-restricted-globals */
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-const logo = new URL('../../assets/open-wc-logo.svg', import.meta.url).href;
+// const logo = new URL('../../assets/open-wc-logo.svg', import.meta.url).href;
 
 export class MyDevice extends LitElement {
-  @property({ type: String }) title = 'My app';
+  @property({ type: Number }) screenWidth = 0;
+
+  @property({ type: Number }) screenHeight = 0;
+
+  @property({ type: Number }) fullScreenWidth = 0;
+
+  @property({ type: Number }) fullScreenHeight = 0;
+
+  @property({ type: Boolean }) cookiesEnabled = true;
+
+  @property({ type: String }) userAgent = '';
+
+  constructor() {
+    super();
+
+    this.screenWidth = document.documentElement.clientWidth;
+    this.screenHeight = document.documentElement.clientHeight;
+    this.fullScreenWidth = screen.width;
+    this.fullScreenHeight = screen.height;
+    this.cookiesEnabled = navigator.cookieEnabled;
+    this.userAgent = navigator.userAgent;
+  }
 
   static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-      background-color: var(--my-device-background-color);
-    }
-
-    main {
-      flex-grow: 1;
-    }
-
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
-    }
-
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
-    }
-
-    .app-footer a {
-      margin-left: 5px;
+    dl dd {
+      font-family: monospace;
     }
   `;
 
   render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.title}</h1>
+        <h1>My Device</h1>
 
-        <p>Edit <code>src/MyDevice.ts</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <dl>
+          <dt>IP address</dt>
+          <dd><em>must be replaced by a server</em></dd>
+
+          <dt>Browser dimensions (width by height)</dt>
+          <dd>${this.screenWidth}px by ${this.screenHeight}px</dd>
+
+          <dt>Screen dimensions (width by height)</dt>
+          <dd>${this.fullScreenWidth}px by ${this.fullScreenHeight}px</dd>
+
+          <dt>User agent</dt>
+          <dd>${this.userAgent}</dd>
+
+          <dt>Cookies enabled</dt>
+          <dd>${this.cookiesEnabled}</dd>
+        </dl>
       </main>
 
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+      <footer>A simple web component app by Michael Head.</footer>
     `;
   }
 }
