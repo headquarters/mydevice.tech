@@ -17,7 +17,8 @@
 
 # build
 /_site/
-/dist/
+# Allow this folder for the _worker.js file to exist in source control.
+# /dist/
 /out-tsc/
 
 storybook-static
